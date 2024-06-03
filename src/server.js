@@ -4,9 +4,16 @@ const express = require('express');
 const app = express();
 const configViewEngine = require("./config/ViewEngine");
 const port = process.env.PORT || 3000;
-// const con = require('./config/dbconnect');
+
+//config for get data 
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}));
+
 //setup View Engine
 configViewEngine(app);
+
 //Init web route
 initWebRoute(app);
 
