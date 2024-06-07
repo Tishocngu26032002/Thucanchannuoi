@@ -42,7 +42,41 @@ let register = (req, res) => {
             return res.send('register user successfully');
         }
     )
-
 }
 
-module.exports = { getListUser, getDetailPage, formRegister, register };
+let deleteUser = (req, res) => {
+    let Iduser = req.body.Iduser;
+    con.query('delete from thucanchannuoi.user where iduser=?', Iduser,
+        function (err, results) {
+            if (err) {
+                return res.send('delete user not success');
+            }
+            return res.send('delete user successfully');
+        }
+    )
+}
+
+let getEditPage = (req, res) => {
+    return res.send('form edit');
+}
+
+let showFormLogin = (req, res) => {
+    return res.render('showFormLogin.ejs');
+}
+
+let authUser = (req, res) => {
+    let { username, password } = req.body;
+    con.query('select * from thucanchannuoi.user where username=? and password=?', [username, password],
+        function (err, results) {
+            if (err) {
+                return res.send('login user not success');
+            }
+            req.session.user = {
+                role: `${results[0].role}`
+            };
+            return res.send(req.session.user);
+        }
+    )
+}
+
+module.exports = { getListUser, getDetailPage, formRegister, register, deleteUser, getEditPage, showFormLogin, authUser };

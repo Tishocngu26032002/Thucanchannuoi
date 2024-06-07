@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="http://localhost:3000/">Home</a>
-        <a href="manageruser">Quản lí người dùng</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="form-register" class="split">Register</a>
-    </div>
+    <%- include('./nav/navuser.ejs') %>
 
     <form action="/register" method="POST" style="padding: 50px 100px; width: 50%; margin: auto;">
         <h1 style="text-align: center;margin-bottom: 30px">Đăng ký</h1>

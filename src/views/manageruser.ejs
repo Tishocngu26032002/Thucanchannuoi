@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="http://localhost:3000/">Home</a>
-        <a href="manageruser">Quản lí người dùng</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="form-register" class="split">Register</a>
-      </div>
+  <%- include('./nav/navadmin.ejs') %>
 
       <div style="padding:0px 32px">
         <h2>List user</h2>
@@ -42,12 +36,13 @@
                 <a href="/detail/user/<%= dataUser[i].iduser %>">
                     <button>Detail</button>
                 </a>
-                <a href="/update/user/<%= dataUser[i].iduser %>">
-                    <button>Edit</button>
-                </a>
-                <a href="/delete/user/<%= dataUser[i].iduser %>">
-                    <button>Delete</button>
-                </a>
+                <form action="/admin/edit/user/<%= dataUser[i].iduser %>" method="GET">
+                  <button type="submit">Edit</button>
+                </form>
+                <form action="/delete-user" method="POST">
+                  <input type="text" value="<%= dataUser[i].iduser %>" hidden name="Iduser">
+                  <button type="submit">Delete</button>
+                </form>  
               </td>
             </tr>
             <% } %>
