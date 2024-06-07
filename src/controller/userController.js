@@ -71,6 +71,10 @@ let authUser = (req, res) => {
             if (err) {
                 return res.send('login user not success');
             }
+            if (results.length === 0) {
+                // Nếu không tìm thấy người dùng, gửi thông báo lỗi
+                return res.status(401).send('Sai tên đăng nhập hoặc mật khẩu.');
+            }
             req.session.user = {
                 role: `${results[0].role}`
             };
