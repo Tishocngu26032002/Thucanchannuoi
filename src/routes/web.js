@@ -1,6 +1,7 @@
 const express = require('express');
 const homeController = require('../controller/homeController');
 const userController = require('../controller/userController');
+const productCotroller = require('../controller/productCotroller');
 
 let router = express.Router();
 const initWebRoute = (app) => {
@@ -10,6 +11,7 @@ const initWebRoute = (app) => {
     router.get('/admin/edit/user/:iduser', userController.getEditPage);
 
     router.get('/', homeController.getHomepage);
+    router.get('/product', productCotroller.getProduct);
     router.get('/login', userController.showFormLogin);
     router.post('/auth', userController.authUser);
 

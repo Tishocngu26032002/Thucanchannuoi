@@ -83,4 +83,5 @@ let authUser = (req, res) => {
     )
 }
 
+
 module.exports = { getListUser, getDetailPage, formRegister, register, deleteUser, getEditPage, showFormLogin, authUser };
